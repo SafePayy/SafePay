@@ -1,0 +1,39 @@
+
+nav.navbar-custom{
+    background-color: rgb(129, 123, 123);
+}
+
+ul li a.custom-white{
+    color: white;
+    border-radius: 40px;
+}
+
+ul li a.custom-white:hover{
+    background-color: white;
+}
+
+a.custom-link{
+    color: white;
+    border: none;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+div.border-setting{
+    margin: 50px;
+}
+
+div.padded{
+    background-color: white;
+    padding: 20px;
+}
+
+img.custom-size{
+    width: 25px;
+    height: 25px;
+}
+
+img.custom-size-second{
+    width: 30px;
+    height: 30px;
+}
