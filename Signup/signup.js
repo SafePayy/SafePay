@@ -24,21 +24,23 @@ function submitForm(event){
 
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
+    let phoneNumber = document.getElementById('phoneNumberInput').value;
     let email = document.getElementById('emailInput').value;
     let password = document.getElementById('passwordInput').value;
 
     //Save User To Database
-    saveUser(firstName, lastName, email, password);
+    saveUser(firstName, lastName, phoneNumber, email, password);
 
     document.getElementById("contactForm").reset();
 }
 
-function saveUser(firstName, lastName, email, password) {
+function saveUser(firstName, lastName, phoneNumber, email, password) {
     var newUserRef = rootRef.push();
 
     newUserRef.set({
         firstName: firstName,
         lastName: lastName,
+        phoneNumber: phoneNumber,
         email: email,
         password: password
     });
