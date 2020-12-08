@@ -28,7 +28,7 @@ function submitForm(event){
 
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
   .then((user) => {
-      console.log("working")
+    window.alert("Account Created, go back and login")
     // Signed in 
     // ...
   })
