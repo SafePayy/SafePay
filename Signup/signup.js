@@ -14,9 +14,6 @@ var firebaseConfig = {
 
   var rootRef = firebase.database().ref("Users");
 
-
-// Event Listener
-
 document.getElementById("contactForm").addEventListener("submit", submitForm);
 
 function submitForm(event){
@@ -25,14 +22,28 @@ function submitForm(event){
     let firstName = document.getElementById('firstName').value;
     let lastName = document.getElementById('lastName').value;
     let phoneNumber = document.getElementById('phoneNumberInput').value;
-    let email = document.getElementById('emailInput').value;
-    let password = document.getElementById('passwordInput').value;
+    let email = document.getElementById('emailInput');
+    let password = document.getElementById('passwordInput');
 
-    //Save User To Database
-    saveUser(firstName, lastName, phoneNumber, email, password);
 
-    document.getElementById("contactForm").reset();
+    firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
+  .then((user) => {
+      console.log("working")
+    // Signed in 
+    // ...
+  })
+  .catch((error) => {
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // ..
+  });
+
+
+  saveUser(firstName, lastName, phoneNumber, email.value, password.value);
+
+  document.getElementById("contactForm").reset();
 }
+
 
 function saveUser(firstName, lastName, phoneNumber, email, password) {
     var newUserRef = rootRef.push();

@@ -20,4 +20,14 @@ var firebaseConfig = {
 
       let email = document.getElementById("email-signin").value;
       let password = document.getElementById("password-signin").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+          window.alert("signed in")
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        window.alert("Error: " + errorMessage);
+      });
   }
