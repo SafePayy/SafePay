@@ -61,17 +61,34 @@ function submitForm(event){
       firstName: firstName,
       email: email
   })
+})
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
     // ..
   })
-  })
   saveUser(firstName, lastName, phoneNumber, email.value, password.value);
 
-  document.getElementById("contactForm").reset();
-
+  setTimeout(() => {
+    
+  }, 3000);
+  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
+  .then((user) => {
+    document.getElementById("contactForm").reset();
   window.location.assign("../FormPage/formIndex.html")
+  })
+  .catch((error) => {
+    // var errorCode = error.code;
+    // var errorMessage = error.message;
+    // window.alert("Error: " + errorMessage);
+  });
+
+  // if(user){
+  //   document.getElementById("contactForm").reset();
+  // window.location.assign("../FormPage/formIndex.html")
+  // }else{
+  //   window.alert("Error signing in")
+  // }
 }
 
 

@@ -30,6 +30,10 @@ var firebaseConfig = {
         var errorMessage = error.message;
         window.alert("Error: " + errorMessage);
       });
-
-  window.location.assign("../FormPage/formIndex.html")
+      if(user){
+        window.location.assign("../FormPage/formIndex.html")
+      }
+      else{
+        window.alert("error signing in")
+      }
   }
