@@ -14,7 +14,25 @@ var firebaseConfig = {
 
   var rootRef = firebase.database().ref("Users");
 
-document.getElementById("contactForm").addEventListener("submit", submitForm);
+  document.getElementById("contactForm").addEventListener("submit", submitForm);
+  
+
+
+  function GoogleSignIn(){
+    var provider = new firebase.auth.GoogleAuthProvider();
+
+    firebase.auth().signInWithPopup(provider)
+    .then(function(response){
+      // console.log("Google account linked")
+      // console.log(response)
+    }).catch(function(error){
+      var errorCode = error.code;
+      var errorMessage = error.message;
+
+      var email = error.email;
+      var credential = error.credential;
+    });
+  }
 
 function submitForm(event){
     event.preventDefault();
