@@ -1,3 +1,7 @@
+body, html{
+    margin: auto;
+}
+
 .navbar-custom{
     background-color: rgb(231, 231, 231);
 }
@@ -10,6 +14,7 @@ img.resize-img{
 
 .custom-container{
     margin-top: 30px;
+    margin-bottom: 40px;
 }
 
 .custom-link{
@@ -28,4 +33,22 @@ img.resize-img{
     width: 60%;
     margin: auto;
     border-radius: 50px;
+}
+
+.searchResults{
+    padding: 20px;
+}
+
+.re-size{
+    height: 50px;
+    width: 50px;
+}
+
+.custom-cont-2{
+    background-color: rgb(182, 174, 174);
+    height: 150px;
+}
+
+.cent{
+    margin: auto;
 }

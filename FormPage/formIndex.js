@@ -25,7 +25,6 @@ var firebaseConfig = {
         var uid = user.uid;
         document.getElementById("intro").innerHTML = "Welcome " + user.displayName;
     } else {
-    //   window.alert("Not signed in");
     }
   });
 

@@ -45,13 +45,19 @@
                       </div>
                   </div>
                   <div class="col-12 col-md-8">
-                      <h2>My Transactions</h2>
-                      <hr>
-                      <input type="text">
-                      <button class="btn btn-outline-dark">Search</button>
+                    <h2>My Transactions</h2>
+                    <hr>
+                      <div class="transSearch">
+                        <input type="text">
+                        <button class="btn btn-outline-dark">Search</button>
+                      </div>
+                      <div class="searchResults">
+                          <h2 id="result"></h2>
+                      </div>
                   </div>
               </div>
           </div>
+
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.1.2/firebase-auth.js"></script>
