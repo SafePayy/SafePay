@@ -30,4 +30,6 @@ var firebaseConfig = {
         var errorMessage = error.message;
         window.alert("Error: " + errorMessage);
       });
+
+  window.location.assign("../FormPage/formIndex.html")
   }

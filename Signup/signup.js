@@ -15,16 +15,25 @@ var firebaseConfig = {
   var rootRef = firebase.database().ref("Users");
 
   document.getElementById("contactForm").addEventListener("submit", submitForm);
-  
+
+  function SignOut(){
+    firebase.auth().signOut().then(function() {
+      window.alert("signed out alaye")
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
 
 
   function GoogleSignIn(){
     var provider = new firebase.auth.GoogleAuthProvider();
 
     firebase.auth().signInWithPopup(provider)
-    .then(function(response){
-      // console.log("Google account linked")
-      // console.log(response)
+    .then((response) => {
+
+      console.log("welcome")
+      window.location.assign("../FormPage/formIndex.html")
+
     }).catch(function(error){
       var errorCode = error.code;
       var errorMessage = error.message;
@@ -45,21 +54,24 @@ function submitForm(event){
 
 
     firebase.auth().createUserWithEmailAndPassword(email.value, password.value)
-  .then((user) => {
-    window.alert("Account Created, go back and login")
-    // Signed in 
-    // ...
+  .then((result) => {
+    result.user.updateProfile({
+      displayName: firstName + " " + lastName,
+      phoneNumber: phoneNumber,
+      firstName: firstName,
+      email: email
   })
   .catch((error) => {
     var errorCode = error.code;
     var errorMessage = error.message;
     // ..
-  });
-
-
+  })
+  })
   saveUser(firstName, lastName, phoneNumber, email.value, password.value);
 
   document.getElementById("contactForm").reset();
+
+  window.location.assign("../FormPage/formIndex.html")
 }
 
 
@@ -69,6 +81,7 @@ function saveUser(firstName, lastName, phoneNumber, email, password) {
     newUserRef.set({
         firstName: firstName,
         lastName: lastName,
+        displayName: firstName + " " + lastName,
         phoneNumber: phoneNumber,
         email: email,
         password: password
