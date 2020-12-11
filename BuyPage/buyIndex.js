@@ -29,6 +29,7 @@ function payWithPaystack(e) {
     extraCharge = 16.5 * ((money) / 100)
   }
   firebase.auth().onAuthStateChanged(function(user) {
+    sellerMail = document.getElementById("emailId").value
     if (user) {
         console.log(user.email)
         let handler = PaystackPop.setup({
@@ -43,8 +44,10 @@ function payWithPaystack(e) {
           window.location.assign("../FormPage/formIndex.html")
             },
             callback: function(response){
-              let message = 'Payment complete! Reference: ' + response.reference;
+              sendEmail(sellerMail);
+              let message = 'Payment complete! A mail would be sent to the seller Reference: ' + response.reference;
               alert(message);
+              window.location.assign("../FormPage/formIndex.html")
             }
           });
           handler.openIframe();
@@ -53,3 +56,29 @@ function payWithPaystack(e) {
     }
   });
 }
+
+function sendEmail(sellersMail) { 
+  Email.send({ 
+
+      Host: "smtp.gmail.com", 
+  
+      Username: "testmailer1289@gmail.com", 
+  
+      Password: "uybuyywcdgdenxst", 
+  
+      To: sellersMail, 
+  
+      From: "testmailer1289@gmail.com", 
+  
+      Subject: "Proof of Payment", 
+  
+      Body: "Hello there, a transaction for the purchase of your products has been initiated on SafePay" +
+      "follow the link below to confirm the transaction", 
+  
+    }) 
+
+    .then(function (message) { 
+      alert("mail sent successfully") 
+    }); 
+
+} 

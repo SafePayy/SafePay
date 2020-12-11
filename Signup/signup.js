@@ -102,6 +102,7 @@ function saveUser(firstName, lastName, phoneNumber, email, password) {
         phoneNumber: phoneNumber,
         email: email,
         password: password,
+        transactionDetails: {},
         listOfTransactions: []
     });
 }
