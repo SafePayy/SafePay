@@ -21,7 +21,7 @@ var firebaseConfig = {
         document.getElementById("intro").innerHTML = "Nothing here";
     }
   });
-
+function SendMail(){
   var API_KEY = 'YOUR_API_KEY';
 var DOMAIN = 'YOUR_DOMAIN_NAME';
 var mailgun = require('mailgun-js')({apiKey: API_KEY, domain: DOMAIN});
@@ -36,3 +36,4 @@ const data = {
 mailgun.messages().send(data, (error, body) => {
   console.log(body);
 });
+}
