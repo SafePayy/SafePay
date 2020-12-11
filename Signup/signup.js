@@ -78,12 +78,12 @@ function submitForm(event){
   window.location.assign("../FormPage/formIndex.html")
   })
   .catch((error) => {
-    // var errorCode = error.code;
+    // var errorCode = error.code;39
     // var errorMessage = error.message;
     // window.alert("Error: " + errorMessage);
   });
 
-  // if(user){
+  // if(user){ 
   //   document.getElementById("contactForm").reset();
   // window.location.assign("../FormPage/formIndex.html")
   // }else{
@@ -101,6 +101,7 @@ function saveUser(firstName, lastName, phoneNumber, email, password) {
         displayName: firstName + " " + lastName,
         phoneNumber: phoneNumber,
         email: email,
-        password: password
+        password: password,
+        listOfTransactions: []
     });
 }
