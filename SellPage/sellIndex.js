@@ -29,6 +29,7 @@ function payWithPaystack(e) {
     extraCharge = 16.5 * ((money) / 100)
   }
   firebase.auth().onAuthStateChanged(function(user) {
+    buyerMail = document.getElementById("emailId").value
     if (user) {
         console.log(user.email)
         let handler = PaystackPop.setup({
@@ -40,11 +41,12 @@ function payWithPaystack(e) {
             // label: "Optional string that replaces customer email"
             onClose: function(){
               alert('Window closed.');
-          window.location.assign("../FormPage/formIndex.html")
             },
             callback: function(response){
+              sendEmail(buyerMail);
               let message = 'Payment complete! Reference: ' + response.reference;
               alert(message);
+              window.location.assign("../FormPage/formIndex.html")
             }
           });
           handler.openIframe();
@@ -52,4 +54,43 @@ function payWithPaystack(e) {
       window.location.assign("../Signin/signin.html")
     }
   });
+}
+var strr = new String("../Confirmation/buyerConfirm.html")
+var link = str.link(strr)
+function sendEmail(buyersMail) { 
+  Email.send({ 
+
+      Host: "smtp.gmail.com", 
+  
+      Username: "testmailer1289@gmail.com", 
+  
+      Password: "uybuyywcdgdenxst", 
+  
+      To: buyersMail, 
+  
+      From: "testmailer1289@gmail.com", 
+  
+      Subject: "Proof of Payment", 
+  
+      Body: "Hello there, a transaction for the purchase of your products has been initiated on SafePay" +
+      "follow the link below to confirm the transaction (we're still working on this)"
+  
+    }) 
+
+    .then(function (message) { 
+      alert("mail sent successfully") 
+    }); 
+
+}
+
+function register(){
+  var deets = user.transactionDetails = {
+    buyerMail: document.getElementById("emailId").value,
+    inProgress: "yes",
+    completed: "no",
+    item: document.getElementById("purchaseId").value,
+    transId: ''+Math.floor((Math.random() * 1000000000) + 1),
+  }
+  user.listOfTransaction.push(deets)
+  console.log(deets.completed);
 }

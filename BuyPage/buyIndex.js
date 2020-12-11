@@ -41,11 +41,11 @@ function payWithPaystack(e) {
             // label: "Optional string that replaces customer email"
             onClose: function(){
               alert('Window closed.');
-          window.location.assign("../FormPage/formIndex.html")
             },
             callback: function(response){
               sendEmail(sellerMail);
-              let message = 'Payment complete! A mail would be sent to the seller Reference: ' + response.reference;
+              // register();
+              let message = 'Payment complete! Reference: ' + response.reference;
               alert(message);
               window.location.assign("../FormPage/formIndex.html")
             }
@@ -56,7 +56,8 @@ function payWithPaystack(e) {
     }
   });
 }
-
+var strr = new String("../Confirmation/buyerConfirm.html")
+var link = str.link(strr)
 function sendEmail(sellersMail) { 
   Email.send({ 
 
@@ -72,8 +73,8 @@ function sendEmail(sellersMail) {
   
       Subject: "Proof of Payment", 
   
-      Body: "Hello there, a transaction for the purchase of your products has been initiated on SafePay" +
-      "follow the link below to confirm the transaction", 
+      Body: "Hello there, a transaction for the purchase of your products has been initiated on SafePay. " +
+      "Follow the link below to confirm the transaction (this is a test mail tho)" +  link
   
     }) 
 
@@ -82,3 +83,15 @@ function sendEmail(sellersMail) {
     }); 
 
 } 
+
+function register(){
+  var deets = user.transactionDetails = {
+    buyerMail: document.getElementById("emailId").value,
+    inProgress: "yes",
+    completed: "no",
+    item: document.getElementById("purchaseId").value,
+    transId: ''+Math.floor((Math.random() * 1000000000) + 1),
+  }
+  user.listOfTransaction.push(deets)
+  console.log(deets.completed);
+}
