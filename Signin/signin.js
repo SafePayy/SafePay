@@ -24,6 +24,7 @@ var firebaseConfig = {
       firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
           window.alert("signed in")
+          window.location.assign("../FormPage/formIndex.html")
       })
       .catch((error) => {
         var errorCode = error.code;

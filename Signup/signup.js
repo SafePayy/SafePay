@@ -69,19 +69,7 @@ function submitForm(event){
   })
   saveUser(firstName, lastName, phoneNumber, email.value, password.value);
 
-  setTimeout(() => {
-    
-  }, 3000);
-  firebase.auth().signInWithEmailAndPassword(email.value, password.value)
-  .then((user) => {
-    document.getElementById("contactForm").reset();
-  window.location.assign("../FormPage/formIndex.html")
-  })
-  .catch((error) => {
-    // var errorCode = error.code;39
-    // var errorMessage = error.message;
-    // window.alert("Error: " + errorMessage);
-  });
+window.location.assign("../Signin/signin.html")
 
   // if(user){ 
   //   document.getElementById("contactForm").reset();
@@ -102,7 +90,5 @@ function saveUser(firstName, lastName, phoneNumber, email, password) {
         phoneNumber: phoneNumber,
         email: email,
         password: password,
-        transactionDetails: {},
-        listOfTransactions: []
     });
 }
